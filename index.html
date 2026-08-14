@@ -275,7 +275,7 @@
   <h1 id="headerTitle">Chargement…</h1>
   <div class="gauge-row">
     <div class="gauge red"><div class="n" id="countRed">0</div><div class="l">Périmés</div></div>
-    <div class="gauge amber"><div class="n" id="countAmber">0</div><div class="l">Bientôt (≤15j)</div></div>
+    <div class="gauge amber"><div class="n" id="countAmber">0</div><div class="l">Bientôt (≤30j)</div></div>
     <div class="gauge mint"><div class="n" id="countMint">0</div><div class="l">Tranquille</div></div>
   </div>
 </header>
@@ -381,7 +381,7 @@ function daysUntil(dateStr){
 function statusOf(dateStr){
   const d = daysUntil(dateStr);
   if (d < 0) return 'red';
-  if (d <= 15) return 'amber';
+  if (d <= 30) return 'amber';
   return 'mint';
 }
 
@@ -389,7 +389,7 @@ function statusLabel(dateStr){
   const d = daysUntil(dateStr);
   if (d < 0) return `Périmé depuis ${Math.abs(d)} j`;
   if (d === 0) return "À consommer aujourd'hui";
-  if (d === 1) return "Dans 1 jour";
+  if (d < 1) return "Moins de 15 jours";
   return `Dans ${d} jours`;
 }
 
